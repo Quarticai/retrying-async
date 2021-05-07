@@ -11,7 +11,7 @@ import async_timeout
 
 propagate = ...
 forever = ...
-__version__ = '1.2.0'
+__version__ = '1.2.1'
 logger = logging.getLogger(__name__)
 
 
@@ -39,7 +39,7 @@ def is_exception(obj):
 
 @asyncio.coroutine
 def callback(attempt, exc, args, kwargs, delay=0.5, *, loop):
-    yield from asyncio.sleep(attempt * delay, loop=loop)
+    yield from asyncio.sleep(delay, loop=loop)
 
     return retry
 
