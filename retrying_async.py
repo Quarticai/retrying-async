@@ -133,7 +133,6 @@ def retry(*, fn=None, attempts=3, delay=0.5, timeout=30,
                             raise ConditionError(
                                 'Can\'t set timeout for non coroutinefunction',
                             )
-
                         with async_timeout.timeout(timeout):
                             ret = yield from ret
 

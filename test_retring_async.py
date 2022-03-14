@@ -9,7 +9,7 @@ from retrying_async import retry
 def request_api_sync():
     print('正在获取')
 
-    response = requests.get(url="http://www.baidu.com")
+    response = requests.get(url="https://www.google.com")
     print(response.status_code, response.content)
     raise Exception("异常")
 
@@ -18,7 +18,7 @@ def request_api_sync():
 async def request_api_async():
     print('正在获取')
 
-    response = requests.get(url="http://www.baidu.com")
+    response = requests.get(url="https://www.google.com")
     print(response.status_code, response.content)
     raise Exception("异常")
 
