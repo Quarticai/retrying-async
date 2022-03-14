@@ -1,16 +1,7 @@
 import io
 import os
-import re
 
 from setuptools import setup
-
-
-def get_version():
-    regex = r"__version__\s=\s\'(?P<version>[\d\.]+?)\'"
-
-    path = ('retrying_async.py',)
-
-    return re.search(regex, read(*path)).group('version')
 
 
 def read(*parts):
@@ -20,15 +11,24 @@ def read(*parts):
         return fp.read()
 
 
+def get_install_requires(requirement_file):
+    requirements = read(requirement_file)
+    install_requires = []
+    for line in requirements.split('\n'):
+        line = line.strip()
+        if line and not line.startswith('-'):
+            install_requires.append(line)
+    return install_requires
+
+
 setup(
     name='retrying-async',
-    version=get_version(),
     author='OCEAN S.A. & Timi.long',
     author_email='lixiaolong@smuer.cn',
     url='https://github.com/lxl0928/retrying_async',
     description='Simple retrying for asyncio',
     long_description=read('README.rst'),
-    install_requires=['async_timeout'],
+    install_requires=get_install_requires('requirements.txt'),
     extras_require={},
     py_modules=['retrying_async'],
     include_package_data=True,
